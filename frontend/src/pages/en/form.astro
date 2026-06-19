@@ -8,6 +8,15 @@ const labels = {
   message: 'Message',
   submit: 'Submit Form'
 };
+
+const messages = {
+  emailRequired: 'Please enter your email address',
+  emailMissingAt: 'Email address must contain the @ symbol',
+  emailMissingDomain: 'Email address must include a valid domain (e.g. example.com)',
+  emailInvalidTld: 'Domain suffix is invalid (e.g. .com, .org, etc.)',
+  emailInvalidFormat: 'Please enter a valid email address format',
+  success: 'Thank you for your message! We will get back to you soon.'
+};
 ---
 
 <Layout title="Contact Us - ModernAstro" lang="en">
@@ -16,7 +25,7 @@ const labels = {
       <h1>Contact Us</h1>
       <p>If you have any questions, please fill out the form below.</p>
     </div>
-    <ContactForm client:load labels={labels} />
+    <ContactForm client:load labels={labels} messages={messages} />
   </div>
 </Layout>
 
