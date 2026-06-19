@@ -1,5 +1,10 @@
 @import '../../styles/variables.less';
 
+@error-color: #ef4444;
+@error-bg: #fef2f2;
+@success-color: #22c55e;
+@success-bg: #f0fdf4;
+
 .contact-form {
   background: @surface-color;
   padding: 40px;
@@ -34,6 +39,37 @@
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
     }
+
+    input.input-error,
+    textarea.input-error {
+      border-color: @error-color;
+      background-color: @error-bg;
+
+      &:focus {
+        border-color: @error-color;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      }
+    }
+  }
+
+  .error-message {
+    margin-top: 6px;
+    margin-bottom: 0;
+    color: @error-color;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .success-message {
+    margin-top: 16px;
+    margin-bottom: 0;
+    padding: 12px 16px;
+    background-color: @success-bg;
+    color: @success-color;
+    border-radius: @radius-md;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
   }
 
   .submit-btn {
