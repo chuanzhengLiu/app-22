@@ -7,8 +7,12 @@ interface Props {
     email: string;
     message: string;
     submit: string;
+    emailInvalid: string;
+    successMessage: string;
   }
 }
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const ContactForm: React.FC<Props> = ({ labels }) => {
   const [formData, setFormData] = useState({
@@ -16,15 +20,38 @@ const ContactForm: React.FC<Props> = ({ labels }) => {
     email: '',
     message: ''
   });
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (email: string): boolean => {
+    if (!EMAIL_REGEX.test(email)) {
+      setEmailError(labels.emailInvalid);
+      return false;
+    }
+    setEmailError('');
+    return true;
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFormData({ ...formData, email: value });
+    if (emailError && value) {
+      validateEmail(value);
+    } else if (!value) {
+      setEmailError('');
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateEmail(formData.email)) {
+      return;
+    }
     console.log('Form submitted:', formData);
-    alert('Thank you for your message!');
+    alert(labels.successMessage);
   };
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <form className="contact-form" onSubmit={handleSubmit} noValidate>
       <div className="form-group">
         <label htmlFor="name">{labels.name}</label>
         <input
@@ -36,15 +63,16 @@ const ContactForm: React.FC<Props> = ({ labels }) => {
         />
       </div>
       
-      <div className="form-group">
+      <div className={`form-group ${emailError ? 'has-error' : ''}`}>
         <label htmlFor="email">{labels.email}</label>
         <input
-          type="text"
+          type="email"
           id="email"
           value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          onChange={handleEmailChange}
           required
         />
+        {emailError && <span className="error-message">{emailError}</span>}
       </div>
 
       <div className="form-group">
