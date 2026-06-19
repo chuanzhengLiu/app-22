@@ -8,6 +8,11 @@ const labels = {
   message: '留言内容',
   submit: '提交表格'
 };
+
+const messages = {
+  invalidEmail: '请输入有效的电子邮箱地址',
+  success: '感谢您的留言！'
+};
 ---
 
 <Layout title="联系我们 - ModernAstro">
@@ -16,7 +21,7 @@ const labels = {
       <h1>联系我们</h1>
       <p>如果您有任何问题或建议，请填写下方的表格。</p>
     </div>
-    <ContactForm client:load labels={labels} />
+    <ContactForm client:load labels={labels} messages={messages} />
   </div>
 </Layout>
 
