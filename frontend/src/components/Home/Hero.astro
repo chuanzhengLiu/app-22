@@ -1,0 +1,24 @@
+---
+import './Hero.less';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  ctaText: string;
+}
+
+const { title, subtitle, ctaText } = Astro.props;
+---
+
+<section class="hero-section">
+  <div class="hero-background">
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1>{title}</h1>
+    <p>{subtitle}</p>
+    <button class="cta-button js-show-toast">{ctaText}</button>
+  </div>
+</section>

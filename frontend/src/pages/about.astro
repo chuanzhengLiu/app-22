@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="关于我们 - ModernAstro">
+  <div class="page-container">
+    <h1>关于我们</h1>
+    <div class="content-card">
+      <p>ModernAstro 是一个致力于提供最佳 Web 开发体验的团队。我们专注于使用前沿技术栈，如 Astro, React 和 TypeScript，来构建高性能、可访问且美观的网站。</p>
+      <p>我们的使命是简化开发流程，同时不妥协最终用户的体验。</p>
+    </div>
+  </div>
+</Layout>
+
+<style lang="less">
+  @import '../styles/variables.less';
+  
+  .page-container {
+    .container();
+    padding: 60px 20px;
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 36px;
+    }
+
+    .content-card {
+      background: @surface-color;
+      padding: 40px;
+      border-radius: @radius-lg;
+      box-shadow: @shadow-md;
+      max-width: 800px;
+      margin: 0 auto;
+
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: @text-secondary;
+        font-size: 18px;
+      }
+    }
+  }
+</style>

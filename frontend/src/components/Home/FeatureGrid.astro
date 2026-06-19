@@ -1,0 +1,27 @@
+---
+import './FeatureGrid.less';
+
+interface Feature {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface Props {
+  features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<section class="features-section" id="features">
+  <div class="features-grid">
+    {features.map(feature => (
+      <div class="feature-card">
+        <div class="feature-icon">{feature.icon}</div>
+        <h3>{feature.title}</h3>
+        <p>{feature.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

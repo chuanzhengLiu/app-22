@@ -1,0 +1,34 @@
+---
+import LanguageSelector from './LanguageSelector';
+import './Header.less';
+
+const pathname = Astro.url.pathname;
+const currentLang = pathname.startsWith('/en') ? 'en' : 'zh';
+
+const navItems = [
+  { label: currentLang === 'zh' ? '首页' : 'Home', href: currentLang === 'zh' ? '/' : '/en' },
+  { label: currentLang === 'zh' ? '关于' : 'About', href: currentLang === 'zh' ? '/about' : '/en/about' },
+  { label: currentLang === 'zh' ? '个人资料' : 'Profile', href: currentLang === 'zh' ? '/profile' : '/en/profile' },
+  { label: currentLang === 'zh' ? '联系我们' : 'Contact', href: currentLang === 'zh' ? '/form' : '/en/form' },
+];
+---
+
+<header class="site-header">
+  <div class="header-content">
+    <a href={currentLang === 'zh' ? '/' : '/en'} class="logo">
+      Modern<span class="highlight">Astro</span>
+    </a>
+
+    <nav class="desktop-nav">
+      {navItems.map(item => (
+        <a href={item.href} class={pathname === item.href || (item.href !== '/' && item.href !== '/en' && pathname.startsWith(item.href)) ? 'active' : ''}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <LanguageSelector client:load currentLang={currentLang} />
+    </div>
+  </div>
+</header>

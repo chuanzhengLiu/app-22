@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Home/Hero.astro';
+import FeatureGrid from '../../components/Home/FeatureGrid.astro';
+
+const features = [
+  {
+    title: 'Modern Design',
+    description: 'Using the latest design language with glassmorphism, gradients, and shadows.',
+    icon: '🎨'
+  },
+  {
+    title: 'Responsive Layout',
+    description: 'Perfectly adapted for mobile and desktop devices for the best browsing experience.',
+    icon: '📱'
+  },
+  {
+    title: 'High Performance',
+    description: 'Built with Astro using static generation for lightning-fast loading speeds.',
+    icon: '⚡'
+  },
+  {
+    title: 'Component Based',
+    description: 'Component-based architecture with React and Astro for easy maintenance.',
+    icon: '🧩'
+  }
+];
+---
+
+<Layout title="Home - ModernAstro" lang="en">
+  <Hero 
+    title="Building Digital Experiences" 
+    subtitle="Explore the infinite possibilities of modern web development."
+    ctaText="Get Started"
+  />
+  <FeatureGrid features={features} />
+</Layout>

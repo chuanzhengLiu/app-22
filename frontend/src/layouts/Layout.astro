@@ -1,0 +1,59 @@
+---
+import Header from '../components/Header/Header.astro';
+import Footer from '../components/Footer/Footer.astro';
+import '../styles/global.less';
+
+interface Props {
+  title: string;
+  lang?: string;
+}
+
+const { title, lang = 'zh' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="A modern website built with Astro" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    
+    <div id="toast-container" class="toast-container">
+      <div class="toast-content">
+        <span class="toast-icon">🚀</span>
+        <span class="toast-message">欢迎探索 ModernAstro！功能正在开发中，敬请期待。</span>
+      </div>
+    </div>
+
+    <script>
+      const toast = document.getElementById('toast-container');
+      
+      document.body.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target && target.classList.contains('js-show-toast')) {
+          e.preventDefault(); // Prevent default link behavior if it's a link
+          
+          if (toast) {
+            // Show toast
+            toast.classList.add('show');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+              toast.classList.remove('show');
+            }, 3000);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

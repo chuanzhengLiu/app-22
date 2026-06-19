@@ -1,0 +1,55 @@
+@import '../../styles/variables.less';
+
+.features-section {
+  padding: 80px 0;
+  background: @bg-color;
+
+  .features-grid {
+    .container();
+    display: grid;
+    grid-template-columns: 1fr; // Mobile: 1 column
+    gap: 32px;
+
+    @media (min-width: @pc-min) {
+      grid-template-columns: repeat(2, 1fr); // PC: 2 columns
+    }
+
+    .feature-card {
+      background: @surface-color;
+      padding: 40px;
+      border-radius: @radius-lg;
+      box-shadow: @shadow-sm;
+      border: 1px solid @border-color;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: @shadow-xl;
+        border-color: @accent-color;
+      }
+
+      .feature-icon {
+        font-size: 32px;
+        margin-bottom: 24px;
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(59, 130, 246, 0.1);
+        border-radius: @radius-md;
+        color: @accent-color;
+      }
+
+      h3 {
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+
+      p {
+        color: @text-secondary;
+        line-height: 1.6;
+      }
+    }
+  }
+}

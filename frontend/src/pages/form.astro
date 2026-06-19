@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/Form/ContactForm';
+
+const labels = {
+  name: '姓名',
+  email: '电子邮箱',
+  message: '留言内容',
+  submit: '提交表格'
+};
+---
+
+<Layout title="联系我们 - ModernAstro">
+  <div class="form-page">
+    <div class="form-header">
+      <h1>联系我们</h1>
+      <p>如果您有任何问题或建议，请填写下方的表格。</p>
+    </div>
+    <ContactForm client:load labels={labels} />
+  </div>
+</Layout>
+
+<style lang="less">
+  @import '../styles/variables.less';
+
+  .form-page {
+    .container();
+    padding: 60px 20px;
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+
+      h1 {
+        margin-bottom: 16px;
+      }
+      
+      p {
+        color: @text-secondary;
+      }
+    }
+  }
+</style>

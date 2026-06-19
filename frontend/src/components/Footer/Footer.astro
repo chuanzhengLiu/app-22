@@ -1,0 +1,60 @@
+---
+import './Footer.less';
+const currentYear = new Date().getFullYear();
+
+const pathname = Astro.url.pathname;
+const currentLang = pathname.startsWith('/en') ? 'en' : 'zh';
+
+const homeUrl = currentLang === 'zh' ? '/' : '/en';
+const aboutUrl = currentLang === 'zh' ? '/about' : '/en/about';
+const contactUrl = currentLang === 'zh' ? '/form' : '/en/form';
+
+const i18n = {
+  zh: {
+    slogan: '用现代 Web 技术构建未来。',
+    product: '产品',
+    features: '功能',
+    showcase: '案例',
+    company: '公司',
+    about: '关于',
+    contact: '联系',
+    rights: '版权所有。'
+  },
+  en: {
+    slogan: 'Building the future with modern web technologies.',
+    product: 'Product',
+    features: 'Features',
+    showcase: 'Showcase',
+    company: 'Company',
+    about: 'About',
+    contact: 'Contact',
+    rights: 'All rights reserved.'
+  }
+};
+
+const t = i18n[currentLang];
+---
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>ModernAstro</h3>
+      <p>{t.slogan}</p>
+    </div>
+    <div class="footer-links">
+      <div class="link-group">
+        <h4>{t.product}</h4>
+        <a href={homeUrl + "#features"}>{t.features}</a>
+        <a href="#" class="js-show-toast">{t.showcase}</a>
+      </div>
+      <div class="link-group">
+        <h4>{t.company}</h4>
+        <a href={aboutUrl}>{t.about}</a>
+        <a href={contactUrl}>{t.contact}</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {currentYear} ModernAstro. {t.rights}</p>
+  </div>
+</footer>

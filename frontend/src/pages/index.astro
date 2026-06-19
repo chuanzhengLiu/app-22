@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Home/Hero.astro';
+import FeatureGrid from '../components/Home/FeatureGrid.astro';
+
+const features = [
+  {
+    title: '现代设计',
+    description: '采用最新的设计语言，结合玻璃拟态、渐变和阴影，打造极具现代感的视觉体验。',
+    icon: '🎨'
+  },
+  {
+    title: '响应式布局',
+    description: '完美适配移动端和桌面端，无论在什么设备上都能获得最佳的浏览体验。',
+    icon: '📱'
+  },
+  {
+    title: '极致性能',
+    description: '基于 Astro 构建，利用静态生成技术，提供闪电般的加载速度。',
+    icon: '⚡'
+  },
+  {
+    title: '组件化开发',
+    description: '基于 React 和 Astro 的组件化架构，易于维护和扩展。',
+    icon: '🧩'
+  }
+];
+---
+
+<Layout title="首页 - ModernAstro">
+  <Hero 
+    title="构建未来的数字体验" 
+    subtitle="探索现代 Web 开发的无限可能，体验极致的性能与设计。"
+    ctaText="开始探索"
+  />
+  <FeatureGrid features={features} />
+</Layout>
