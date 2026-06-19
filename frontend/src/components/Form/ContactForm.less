@@ -1,5 +1,7 @@
 @import '../../styles/variables.less';
 
+@error-color: #ef4444;
+
 .contact-form {
   background: @surface-color;
   padding: 40px;
@@ -32,6 +34,24 @@
         outline: none;
         border-color: @accent-color;
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+    }
+
+    &.has-error {
+      input {
+        border-color: @error-color;
+
+        &:focus {
+          border-color: @error-color;
+          box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+      }
+
+      .error-message {
+        display: block;
+        color: @error-color;
+        font-size: 14px;
+        margin-top: 6px;
       }
     }
   }
